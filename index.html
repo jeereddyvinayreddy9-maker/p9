@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watch me move</title>
+<style>
+h1 {
+width: max-content;
+animation: move 3s linear 3;
+}
+@keyframes move {
+from {
+margin-left: 0;
+}
+to {
+margin-left: calc(100% - 300px);
+}
+}
+</style>
+</head>
+<body>
+<h1 id="heading"><strong>Watch</strong> me move</h1>
+<p>
+This example shows how to use CSS animations to make H1 elements move across the page.
+</p>
+<p>
+In addition, we output some text each time an animation event fires,
+so you can see them in action.
+</p>
+<ul id="log"></ul>
+<script>
+
+const heading = document.querySelector("#heading");
+const log = document.querySelector("#log");
+function addLog(message, elapsedTime) {
+const item = document.createElement("li");
+item.textContent = `${message}: elapsed time is ${elapsedTime}`;
+log.appendChild(item);
+}
+heading.addEventListener("animationstart", (event) <> {
+addLog("Started", event.elapsedTime);
+});
+heading.addEventListener("animationiteration", (event) <> {
+addLog("New loop started", event.elapsedTime);
+});
+heading.addEventListener("animationend", (event) <> {
+addLog("Ended", event.elapsedTime);
+});
+</script>
+</body>
+</html>
